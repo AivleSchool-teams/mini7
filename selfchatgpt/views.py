@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="")
 
 #chatGPT에게 채팅 요청 API
 def chatGPT(prompt):

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mini7_13</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <body>
+    <!--  Header -->
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="/selfchatgpt/page" class="nav_logo">SignLanguage</a>
+          <ul class="nav_list desktop_nav">
+            <li class="nav_item"><a href="/selfchatgpt/" class="nav_link">ChatGPT</a></li>
+            <li class="nav_item"><a href="/selfsignlanguagetochatgpt/" class="nav_link">Sign-ChatGPT&nbsp;&nbsp;</a></li>
+            
+              <form id="logout-form" action="/accounts/logout/" method="POST">
+                {% csrf_token %}
+              {% if user.is_authenticated %}
+              <li class="nav_item"><a href="#" class="nav_link">{{ user.username }}님</a>&nbsp;&nbsp;&nbsp;
+              <a href="#" class="logout_btn" id="nav_btn">Logout</a></li>
+              {% else %}
+              <a href="/accounts/login" class="nav_btn">Login</a>
+              {% endif %}</form></ul>
+      </div>
+      
+    </nav>
+    <header class="header">
+    <main>
+    
+      <section class="section">
+        <div class="container services_container">
+          <div class="section_header">
+            {% load static %}
+            {% block extrahead %}
+            {% endblock %}
+            <form action="chat" id="myForm" method="post" enctype="application/x-www-form-urlencoded">
+              <div id="file-module-0">
+                <h2 class="section_title">Translation chatgpt <br /></h2>
+                <p class="section_text" style='font-family: NanumGothic;'>ChatGPT는 다양한 주제에 대해 대화할 수 있는 인공지능입니다. 궁금한 것이 있거나 이야기를 나누고 싶다면 사용해보세요!</p><br>
+                {% csrf_token %}
+                <textarea class="question" id="question" name="question" placeholder="질문할 내용을 입력해 주세요.">{{question}}</textarea>
+                <div><button id="text-button" class="experience_btn" type="submit" >질문</button></div><br><br><hr><br><br>
+              </div>
+            </form>
+            <textarea class="question" id="result-textarea" name="result" placeholder="답변 결과 입니다.">{{result}}</textarea><br><br>
+          </div>
+        </div>
+          
+          </div>
+          <div class="services">
+            <div class="service">
+                <span class="icon">
+                    <img src="/images/Icons/Icon-1.png" alt=""/>
+                </span>
+                <h3 class="service_title">ChatGPT: 실시간 대화 기능</h3>
+                <p class="service_text">
+                    ChatGPT는 자연어 처리 기술을 활용하여 실시간 대화 기능을 제공합니다. <br>인공지능 ChatGPT와 대화를 나누면 질문에 대한 정확하고 유연한 답변을 받을 수 있습니다.
+                </p><br>
+            </div>
+            <div class="service">
+                <span class="icon">
+                    <img src="/images/Icons/Icon-2.png" alt=""/>
+                </span>
+                <h3 class="service_title">ChatGPT: 창의적인 대화 파트너</h3>
+                <p class="service_text">
+                    ChatGPT는 창의적인 대화를 위한 파트너로서 여러분을 돕습니다. <br>다양한 주제에 대해 이야기하고, 문제를 해결하며, 새로운 아이디어를 얻을 수 있습니다.
+                </p>
+            </div>
+            <div class="service">
+                <span class="icon">
+                    <img src="/images/Icons/Icon-3.png" alt=""/>
+                </span>
+                <h3 class="service_title">ChatGPT: 다양한 활용 가능</h3>
+                <p class="service_text">
+                    ChatGPT는 다양한 분야에서 활용할 수 있습니다. <br>질문에 대답하거나 조언을 구하고, 가벼운 대화를 즐기며, 창의적인 솔루션을 찾기 위해 사용할 수 있습니다.
+                </p>
+            </div>
+        </div>
+        
+        </div>
+      </section>
+
+
+
+      <section class="section">
+        <div class="container experience_container">
+          <div class="expericen_text">
+            <h3 class="experience_title">
+              챗GPT 질문(프롬프트)입력 팁
+            </h3>
+            <p class="experience_text">
+      
+chatGPT를 제대로 활용하기 위해선 질문(프롬프트)을 잘 입력하는 것이 중요합니다.<br>
+<br>
+<b>1. 영어로 질문하세요.</b><br>
+예를 들어, "What is the capital city of France?"와 같은 영어로 된 질문은 ChatGPT가 빠르게 정확한 답변을 제공할 수 있습니다. 영어가 모국어가 아니더라도 영어로 질문하는 것이 더 효과적입니다.
+상황을 구체적으로 설명하세요.<br><br>
+<b>2. 상황을 구체적으로 설명하세요.</b><br>
+예를 들어, "API에 대해 설명해주세요"라는 질문보다는 "저는 고등학교 학생입니다. 코딩에 관심이 많아서 API에 대해 자세히 알고 싶습니다. <br>API 개념을 쉽게 이해할 수 있는 설명과 함께, 실생활에서의 예시를 몇 가지 들어주세요"와 같이 배경과 목적을 더 자세히 설명하는 질문을 하면, ChatGPT가 더 유용한 답변을 제공할 수 있습니다. 또한, 비슷한 질문을 반복하면 ChatGPT가 대화의 맥락을 이해하고 원하는 답변을 더 잘 제공할 수 있습니다.<br><br>
+<b>3. 챗GPT에게 역할을 부여해 보세요.</b><br>
+ChatGPT에게 역할을 부여하여 대화를 이어나가는 것도 가능합니다. 예를 들어, "코딩에 관심이 많은 고등학교 학생으로서 행동해주세요. 제가 질문을 하면 답변을 해주시면 좋겠습니다. 첫 번째 질문은 저에게 맞춤형 코딩 학습 자료를 추천해주세요"와 같이 역할을 명시하고 ChatGPT와 대화를 시작해보세요. 이렇게 활용하면 ChatGPT를 개인적인 목적에 맞게 활용할 수 있습니다.
+            </p>
+            <a href="https://openai.com/chatgpt" class="experience_btn" target="_blank">Learn more</a>
+          </div>
+        </div><br><br><br><br>
+      </section>
+
+      <footer class="footer">
+        <div class="cotainer footer_container">
+          <div class="footer_items">
+            <a href="#" class="footer_logo">SignLanguage</a>
+            <p class="footer_copy">
+              Copyright © 2023 KTAivle. All rights reserved
+            </p>
+          </div>
+          <div class="footer_items">
+            <h3 class="footer_item_title">People</h3>
+            <ul class="footer_company_list">
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">김예은</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">김재은</a>
+              </li>
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">박예진</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">신수환</a>
+              </li>
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">이가연</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">이민욱</a>
+              </li>
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">장현지</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">허정아</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer_items">
+            <h3 class="footer_item_title">Support 수정 필요</h3>
+            <ul class="footer_support_list">
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Help center</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Terms of services</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Legal</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Privacy policy</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Status</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer_items">
+            <h3 class="footer_item_title stay">Stay up to date 수정필요</h3>
+            <div class="footer_update">
+              <input
+                type="text"
+                class="footer_update_input"
+                placeholder="your email address" />
+              <span>&rarr;</span>
+            </div>
+          </div>
+        </div>
+        <script src="/js/app.js"></script>
+      </footer>
+  
+    </main>
+  </header>
+  
+  <script>
+    $(document).ready(function() {
+      $('#myForm').submit(function(event) {
+        event.preventDefault(); // 폼의 기본 제출 동작을 막습니다.
+  
+        // AJAX를 사용하여 폼 데이터를 서버로 전송합니다.
+        $.ajax({
+          url: 'chat', // 서버 URL을 입력하세요.
+          type: 'post',
+          data: $(this).serialize(),
+          headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Django CSRF 토큰을 포함합니다.
+          success: function(response) {
+            $('#result-textarea').val(response);
+          },
+          error: function() {
+            alert('오류가 발생했습니다. 다시 시도해주세요.');
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    // 로그아웃 버튼 클릭 시 로그아웃 처리를 위한 JavaScript 코드
+    document.addEventListener('DOMContentLoaded', function() {
+      var logoutBtn = document.querySelector('.logout_btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('logout-form').submit();
+        });
+      }
+    });
+  </script>
+  </body>
+</html>

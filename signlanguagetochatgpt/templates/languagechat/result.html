@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mini7_13</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <body>
+    <!--  Header -->
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="/selfchatgpt/page" class="nav_logo">SignLanguage</a>
+          <ul class="nav_list desktop_nav">
+            <li class="nav_item"><a href="/selfchatgpt/" class="nav_link">ChatGPT</a></li>
+            <li class="nav_item"><a href="/selfsignlanguagetochatgpt/" class="nav_link">Sign-ChatGPT</a></li>
+            <li class="nav_item"><a href="#" class="nav_link">Board&nbsp;&nbsp;</a></li>
+            <li class="nav_item">
+                <a href="/accounts/login" class="nav_btn">Login</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    <header class="header">
+    <main>
+    
+      <section class="section">
+        <div class="container services_container">
+          <div class="section_header">
+            {% load static %}
+            {% block extrahead %}
+            {% endblock %}
+            <form action="chat" id="myForm" method="post" enctype="application/x-www-form-urlencoded">
+              <div id="file-module-0">
+                <h2 class="section_title">Translation Sign chatgpt <br /></h2>
+                <p class="section_text" style='font-family: NanumGothic;'>ChatGPT는 다양한 주제에 대해 대화할 수 있는 인공지능입니다. 궁금한 것이 있거나 이야기를 나누고 싶다면 사용해보세요!</p><br>
+                {% csrf_token %}
+                <textarea class="question" id="question" name="question" placeholder="질문할 내용을 입력해 주세요.">{{question}}</textarea>
+                <div><button id="text-button" class="experience_btn" type="submit" >질문</button></div><br><br><hr><br><br>
+              </div>
+            </form>
+            <textarea class="question" id="result-textarea" name="result" placeholder="답변 결과 입니다.">{{result}}</textarea><br><br>
+          </div>
+        </div>
+          
+          </div>
+        
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="cotainer footer_container">
+          <div class="footer_items">
+            <a href="#" class="footer_logo">SignLanguage</a>
+            <p class="footer_copy">
+              Copyright © 2023 KTAivle. All rights reserved
+            </p>
+          </div>
+          <div class="footer_items">
+            <h3 class="footer_item_title">People</h3>
+            <ul class="footer_company_list">
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">김예은</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">김재은</a>
+              </li>
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">박예진</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">신수환</a>
+              </li>
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">이가연</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">이민욱</a>
+              </li>
+              <li class="footer_company_item">
+                <a href="#" class="footer_company_link">장현지</a>&nbsp;&nbsp;
+                <a href="#" class="footer_company_link">허정아</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer_items">
+            <h3 class="footer_item_title">Support 수정 필요</h3>
+            <ul class="footer_support_list">
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Help center</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Terms of services</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Legal</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Privacy policy</a>
+              </li>
+              <li class="footer_support_item">
+                <a href="#" class="footer_support_link">Status</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer_items">
+            <h3 class="footer_item_title stay">Stay up to date 수정필요</h3>
+            <div class="footer_update">
+              <input
+                type="text"
+                class="footer_update_input"
+                placeholder="your email address" />
+              <span>&rarr;</span>
+            </div>
+          </div>
+        </div>
+        <script src="/js/app.js"></script>
+      </footer>
+  
+    </main>
+  </header>
+  <script>
+    $(document).ready(function() {
+      $('#myForm').submit(function(event) {
+        event.preventDefault(); // 폼의 기본 제출 동작을 막습니다.
+  
+        // AJAX를 사용하여 폼 데이터를 서버로 전송합니다.
+        $.ajax({
+          url: 'chat', // 서버 URL을 입력하세요.
+          type: 'post',
+          data: $(this).serialize(),
+          headers: { "X-CSRFToken": "{{ csrf_token }}" }, // Django CSRF 토큰을 포함합니다.
+          success: function(response) {
+            $('#result-textarea').val(response);
+          },
+          error: function() {
+            alert('오류가 발생했습니다. 다시 시도해주세요.');
+          }
+        });
+      });
+    });
+  </script>
+  </body>
+</html>

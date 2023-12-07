@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignImage-GPT</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_image.css' %}">
+  </head>
+  <body>
+    <!--  Header -->
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="/selfchatgpt/page" class="nav_logo">SignLanguage</a>
+          <ul class="nav_list desktop_nav">
+            <li class="nav_item"><a href="/selfchatgpt/" class="nav_link">ChatGPT</a></li>
+            <li class="nav_item"><a href="/selfsignlanguagetochatgpt/" class="nav_link">Sign-ChatGPT&nbsp;&nbsp;</a></li>
+            
+              <form id="logout-form" action="/accounts/logout/" method="POST">
+                {% csrf_token %}
+              {% if user.is_authenticated %}
+              <li class="nav_item"><a href="#" class="nav_link">{{ user.username }}님</a>&nbsp;&nbsp;&nbsp;
+              <a href="#" class="logout_btn" id="nav_btn">Logout</a></li>
+              {% else %}
+              <a href="/accounts/login" class="nav_btn">Login</a>
+              {% endif %}</form></ul>
+      </div>
+      
+    </nav>
+    <header class="header">
+    <main>
+      <section class="section">
+        <div class="container services_container">
+          <div class="section_header"><br><br>
+          <h2 class="section_title">
+            Translation photo chatgpt <br />
+          </h2>
+          <p class="section_text" style='font-family: NanumGothic;'>
+            사진 파일을 업로드하면 수화로 번역합니다.
+          </p><br>
+          <div class="section_header">
+            <form action="chat" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <span id="file-module-0">
+                    <div class="button">
+                        <label for="chooseFile">
+                            👉 <b class="term">CLICK HERE!</b> 👈
+                        </label>
+                    </div>
+                    
+                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="updateFileName(this)" multiple>
+                </span>
+                <div class="fileContainer">
+                    <div class="fileInput">
+                        <p>FILE NAME: </p>
+                        <p id="fileName"></p>
+                    </div>
+                    <script>
+                      function updateFileName(input) {
+                        const fileNameElement = document.getElementById('fileName');
+                        
+                        // Clear the existing content
+                        fileNameElement.textContent = '';
+                    
+                        // Check if any file is selected
+                        if (input.files.length > 0) {
+                            // Display the names of all selected files
+                            for (let i = 0; i < input.files.length; i++) {
+                                fileNameElement.textContent += input.files[i].name + ' ';
+                            }
+                        }
+                    }       
+                    </script>
+                    <div class="buttonContainer">
+                        <input type="submit" value="SUBMIT" class="submit" style="all:unset;">
+                    </div>
+                </div>
+            </form><br><br><br><br><br>
+        </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      
+  <footer class="footer">
+    <div class="cotainer footer_container">
+      <div class="footer_items">
+        <a href="#" class="footer_logo">SignLanguage</a>
+        <p class="footer_copy">
+          Copyright © 2023 KTAivle. All rights reserved
+        </p>
+      </div>
+      <div class="footer_items">
+        <h3 class="footer_item_title">People</h3>
+        <ul class="footer_company_list">
+          <li class="footer_company_item">
+            <a href="#" class="footer_company_link">김예은</a>&nbsp;&nbsp;
+            <a href="#" class="footer_company_link">김재은</a>
+          </li>
+          <li class="footer_company_item">
+            <a href="#" class="footer_company_link">박예진</a>&nbsp;&nbsp;
+            <a href="#" class="footer_company_link">신수환</a>
+          </li>
+          <li class="footer_company_item">
+            <a href="#" class="footer_company_link">이가연</a>&nbsp;&nbsp;
+            <a href="#" class="footer_company_link">이민욱</a>
+          </li>
+          <li class="footer_company_item">
+            <a href="#" class="footer_company_link">장현지</a>&nbsp;&nbsp;
+            <a href="#" class="footer_company_link">허정아</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_items">
+        <h3 class="footer_item_title">Support 수정 필요</h3>
+        <ul class="footer_support_list">
+          <li class="footer_support_item">
+            <a href="#" class="footer_support_link">Help center</a>
+          </li>
+          <li class="footer_support_item">
+            <a href="#" class="footer_support_link">Terms of services</a>
+          </li>
+          <li class="footer_support_item">
+            <a href="#" class="footer_support_link">Legal</a>
+          </li>
+          <li class="footer_support_item">
+            <a href="#" class="footer_support_link">Privacy policy</a>
+          </li>
+          <li class="footer_support_item">
+            <a href="#" class="footer_support_link">Status</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer_items">
+        <h3 class="footer_item_title stay">Stay up to date 수정필요</h3>
+        <div class="footer_update">
+          <input
+            type="text"
+            class="footer_update_input"
+            placeholder="your email address" />
+          <span>&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+    </main>
+  </header>
+  </body>
+  <script src="{% static 'js/app.js' %}"></script>
+  <script>
+    let idNum = 0;
+    function addFile(){
+        deepCopy();
+    }
+
+    function deepCopy()  {
+      // 'test' node 선택
+      const fileModule = document.getElementById('file-module-'+idNum);
+
+
+
+      // 노드 복사하기 (deep copy)
+      const newNode = fileModule.cloneNode(true);
+
+      console.log(newNode)
+
+      // 복사된 Node id 변경하기
+      idNum++;
+      newNode.id = 'file-module-' + idNum;
+
+      // 복사한 노드 붙여넣기
+      fileModule.after(newNode);
+    }
+  </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logoutBtn = document.querySelector('.logout_btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('logout-form').submit();
+        });
+      }
+    });
+</script>
+</html>

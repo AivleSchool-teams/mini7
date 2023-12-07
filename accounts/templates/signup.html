@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/join.css' %}">
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="/selfchatgpt/page" class="nav_logo">SignLanguage</a>
+          <ul class="nav_list desktop_nav">
+            <li class="nav_item"><a href="/selfchatgpt/" class="nav_link">ChatGPT</a></li>
+            <li class="nav_item"><a href="/selfsignlanguagetochatgpt/" class="nav_link">Sign-ChatGPT&nbsp;&nbsp;</a></li>
+            <li class="nav_item">
+              <a href="/accounts/login" class="nav_btn">Login</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    <div class="v10_483">
+        <div class="v33_1648">
+            <div class="join-wrapper">
+                <h2>Sign Up</h2><br>
+                <form action="/accounts/signup/" method="POST" id="join-form" name="join_form">
+                  {% csrf_token %}
+                  아이디: <br>
+                  <input name="username" placeholder="username" type="text" id="name">
+                  <br>
+                  비밀번호: <br>
+                  <input name="password1" placeholder="password" type="password" id="password1">
+                  <br>
+                  비밀번호 확인: <br>
+                  <input name="password2" placeholder="password" type="password" id="password2">
+                  <br>
+                  <input type="button" onclick="test()" value="비밀번호 확인"><br>
+                  이메일: <br>
+                  <input name="email" type="email" placeholder="Email" id="email">
+                  <br><br>
+                  <hr>
+                  <br><br>
+                  <input type="submit" class="btn btn-primary" value="Sign Up">
+                  <br><span>이미 회원이신가요? </span><span class="v33_1948" onclick="location.href='/accounts/login'">로그인</span>
+              </form>
+</div>
+</div>
+</div>
+</body>
+</html>

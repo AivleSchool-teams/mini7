@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="/selfchatgpt/page" class="nav_logo">SignLanguage</a>
+          <ul class="nav_list desktop_nav">
+            <li class="nav_item"><a href="/selfchatgpt/" class="nav_link">ChatGPT</a></li>
+            <li class="nav_item"><a href="/selfsignlanguagetochatgpt/" class="nav_link">Sign-ChatGPT&nbsp;&nbsp;</a></li>
+            <li class="nav_item">
+              <a href="/accounts/login" class="nav_btn">Login</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    <div class="v10_483">
+    <!--로그인 입력 폼-->
+    <div class="v33_1648">
+        <div class="login-wrapper">
+            <h2>LOGIN</h2>
+            {% if error %}
+                <p class="alert alert-danger">{{ exception }}</p>
+            {% endif %}
+            <form method="post" id="login-form">
+              {% csrf_token %}
+                <input type="text" placeholder="username" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <br><br>
+                <hr>
+
+                <button type="submit" id="Login" >LOGIN</button>
+                <div class="v33_1650"></div>
+                <span class="v33_1651">아직 회원이 아니신가요? </span><span class="v33_1948" onclick="location.href='/accounts/signup'">회원가입</span>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>

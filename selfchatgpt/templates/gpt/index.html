@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mini7_13</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <body>
+    <!--  Header -->
+    <nav class="nav">
+      <div class="container nav_container">
+        <a href="/selfchatgpt/page" class="nav_logo">SignLanguage</a>
+          <ul class="nav_list desktop_nav">
+            <li class="nav_item"><a href="/selfchatgpt/" class="nav_link">ChatGPT</a></li>
+            <li class="nav_item"><a href="/selfsignlanguagetochatgpt/" class="nav_link">MY-Sign-ChatGPT</a></li>
+            <li class="nav_item"><a href="#" class="nav_link">게시판</a></li>
+            <li class="nav_item">
+              <a href="#" class="nav_btn">회원가입</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+    <header class="header">
+    <main>
+      <section class="section">
+        <div class="container clients_container">
+          
+        </div>
+      </section>
+      <section class="section">
+        <div class="container services_container">
+          <div class="section_header">
+            {% load static %}
+            {% block extrahead %}
+            {% endblock %}
+            <form action="chat" method="post" entype="application/x-www-form-urlencoded">
+              {% csrf_token %}
+              <div id="file-module-0">
+                <h2 class="section_title">Translation chatgpt <br /></h2>
+                <p class="section_text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+              <textarea class="question" id="question" name="question"></textarea>
+              <div><button id="text-button" class="experience_btn" type="submit" >질문</button></div>
+            </form>
+          </div>
+          
+          </div>
+          <div class="services">
+            <div class="service">
+              <span class="icon"
+                ><img src="/images/Icons/Icon-1.png" alt=""
+              /></span>
+              <h3 class="service_title">Membership Organizations</h3>
+              <p class="service_text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Commodi neque optio aliquam voluptatum voluptate.
+              </p>
+            </div>
+            <div class="service">
+              <span class="icon"
+                ><img src="/images/Icons/Icon-2.png" alt=""
+              /></span>
+              <h3 class="service_title">National Associations</h3>
+              <p class="service_text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Commodi neque optio aliquam voluptatum voluptate.
+              </p>
+            </div>
+            <div class="service">
+              <span class="icon"
+                ><img src="/images/Icons/Icon-3.png" alt=""
+              /></span>
+              <h3 class="service_title">Clubs & Groups</h3>
+              <p class="service_text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Commodi neque optio aliquam voluptatum voluptate.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="section">
+        <div class="container experience_container">
+          <div class="experience_image">
+            <img src="/images/rafiki.png" alt="" />
+          </div>
+          <div class="expericen_text">
+            <h3 class="experience_title">
+              The unseen of spending three years at Pixelgrade
+            </h3>
+            <p class="experience_text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem
+              tenetur veritatis numquam qui nostrum ipsum iste iure perferendis
+              sint provident nobis consectetur, distinctio esse? Earum
+              cupiditate doloribus eveniet veniam odit.
+            </p>
+            <a href="#" class="experience_btn">Learn more</a>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="help">
+          <div class="container help_container">
+            <div class="help_heading">
+              <h3 class="help_title">
+                Helping a local <span>business reinvent itself</span>
+              </h3>
+              <p class="help_p">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+            </div>
+            <div class="help_content">
+              <div class="help_item">
+                <img src="/images/Icons/members.png" alt="" />
+                <div class="help_item_text">
+                  <h2 class="help_item_title">2,245,341</h2>
+                  <p class="helpitem_text">Members</p>
+                </div>
+              </div>
+              <div class="help_item">
+                <img src="/images/Icons/club.png" alt="" />
+                <div class="help_item_text">
+                  <h2 class="help_item_title">2,245,341</h2>
+                  <p class="helpitem_text">Members</p>
+                </div>
+              </div>
+              <div class="help_item">
+                <img src="/images/Icons/booking.png" alt="" />
+                <div class="help_item_text">
+                  <h2 class="help_item_title">2,245,341</h2>
+                  <p class="helpitem_text">Members</p>
+                </div>
+              </div>
+              <div class="help_item">
+                <img src="/images/Icons/payments.png" alt="" />
+                <div class="help_item_text">
+                  <h2 class="help_item_title">2,245,341</h2>
+                  <p class="helpitem_text">Members</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+    </main>
+  </header>
+  </body>
+</html>

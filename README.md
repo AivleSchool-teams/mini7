@@ -1,2 +1,2 @@
-# mini7
-mini7_SignLanguage
+# KT Aivle School 13조 mini7 SignLanguage 프로젝트
+![screencapture-127-0-0-1-8000-selfchatgpt-page-2023-12-07-16_48_59](https://github.com/KTmini7SignLanguage/mini7/assets/74652164/61ae3962-601e-43f6-b6d6-c67e568401d9)
